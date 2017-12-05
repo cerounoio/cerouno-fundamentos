@@ -1,17 +1,20 @@
 .site
+  = render 'layouts/navbar'
+  = render 'layouts/alert'
   .container-fluid
     .hero
       .col-md-12
         h5 NIVEL PRINCIPIANTES
         h1 <em>Fundamentos <br>de Programación</em>
-        h3 Aprende a programar <br> un aplicación web en un mes
+        h3 Aprende a programar <br> una aplicación web en un mes
         br
         p ENERO 13, 2018
         br
         h5.precio-anterior PRECIO: $15 mil pesos
         h3 <em>$10 mil pesos</em>
         p PRECIO POR INTRODUCCIÓN
-    .valor
+        = link_to 'APLICA AHORA', 'https://goo.gl/forms/gij41OqOJ22jQHjT2', class: 'btn btn-lg btn-primary'
+    .propuesta#propuesta
       .col-md-12
         .row
           .col-md-4
@@ -28,68 +31,100 @@
               | Aprende sin dejar tu trabajo. Nuestras clases son los sábados de 10 am a 5 pm y nos puedes preguntar tus dudas via Slack.
     .testimonial
       .col-md-12
-        h4 "Jorge was one of my favorite teachers during my time at Turing. He had a great way of communicating complicated ideas in a fun, pragmatic way that made learning easy."
+        h4 "Jorge was one of my favorite teachers. He had a great way of communicating complicated ideas in a fun, pragmatic way that made learning easy."
         br
         p –Travis Haby<br>Software Engineer, Guild Education
-    .programa
+    .program#program
       .col-md-12
         h3 PROGRAMA
         .row
           .col-md-4
-            h5 Primera Sesión
+            h4 Primera Sesión
           .col-md-4
-            h5 Temario
+            h4 Temario
             p
               | Preparación de Ambiente de Desarrollo<br>
               | Introducción a Git / Github<br>
               | Introducción a Ruby<br>
               | Proyecto: Pizzatron
           .col-md-4
-            h5 Habilidades
+            h4 Habilidades
             p
               | Git<br>
               | Ruby
         .row
           .col-md-4
-            h5 Segunda Sesión
+            h4 Segunda Sesión
           .col-md-4
-            h5 Temario
+            h4 Temario
             p
               | HTML / CSS<br>
               | Introducción a jQuery<br>
               | Proyecto: Listancia
           .col-md-4
-            h5 Habilidades
+            h4 Habilidades
             p
               | HTML<br>
               | CSS<br>
               | jQuery
         .row
           .col-md-4
-            h5 Tercera Sesión
+            h4 Tercera Sesión
           .col-md-4
-            h5 Temario
+            h4 Temario
             p
-              | Cómo funciona Internet<br>
+              | Fundamentos de Internet<br>
               | Ruby on Rails<br>
               | Proyecto: Bloggi
           .col-md-4
-            h5 Habilidades
+            h4 Habilidades
             p
-              | HTTP Verbs<br>
+              | REST<br>
               | MVC<br>
               | Ruby on Rails
         .row
           .col-md-4
-            h5 Cuarta Sesión
+            H4 Cuarta Sesión
           .col-md-4
-            h5 Temario
+            h4 Temario
             p
               | Bootstrap<br>
               | Administración de Usuarios<br>
               | Proyecto: Recetina
           .col-md-4
-            h5 Habilidades
+            h4 Habilidades
             p
               | Bootstrap<br>
               | BCrypt<br>
+    .contact#contact
+      .col-md-12
+        h3 CONTACTO
+        = form_tag(contact_path)
+          .form-row
+            .form-group.col-md-6
+              = label_tag 'Nombre'
+              = text_field_tag :first_name, nil, placeholder: 'Ada', class: 'form-control'
+              = render 'layouts/form_error', object: @service, attribute: :first_name
+            .form-group.col-md-6
+              = label_tag 'Apellidos'
+              = text_field_tag :last_name, nil, placeholder: 'Lovelace', class: 'form-control'
+              = render 'layouts/form_error', object: @service, attribute: :last_name
+          .form-row
+            .form-group.col-md-6
+              = label_tag 'Email'
+              = email_field_tag :email, nil, placeholder: 'ada@example.com', class: 'form-control'
+              = render 'layouts/form_error', object: @service, attribute: :email
+            .form-group.col-md-6
+              = label_tag 'Whatsapp'
+              = text_field_tag :whatsapp, nil, placeholder: '1234567890', class: 'form-control'
+              = render 'layouts/form_error', object: @service, attribute: :whatsapp
+          .form-row
+            .form-group.col-md-12
+              = label_tag 'Mensaje'
+              = text_area_tag :message, nil, rows: 5, placeholder: 'Me interesa pedir informes sobre...', class: 'form-control'
+              = render 'layouts/form_error', object: @service, attribute: :message
+          .text-right
+            = submit_tag 'ENVIAR MENSAJE', class: 'btn btn-secondary'
+    .footer
+      .col-md-12
+        p Derechos Reservados © 2017 <b>CEROUNO VENTURES</b>
